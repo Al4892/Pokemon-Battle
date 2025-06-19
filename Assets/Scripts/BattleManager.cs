@@ -61,6 +61,7 @@ public class BattleManager : MonoBehaviour
             defender.transform.LookAt(attacker.transform);
             Attack attack = attacker.attacks.getRandomAttack();
             SoundManager.instance.Play(attack.soundName);
+            attacker.CharacterAnimator.Play(attack.animationName);
             yield return new WaitForSeconds(attack.attackTime);
             defender.Health.TakeDamage(Random.Range(attack.minDamage, attack.MaxDamage));
             if (defender.Health.CurrentHealth <= 0)
