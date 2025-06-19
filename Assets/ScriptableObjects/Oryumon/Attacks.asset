@@ -17,9 +17,11 @@ MonoBehaviour:
     MaxDamage: 100
     attackTime: 3
     animationName: Attack01
+    soundName: OrAttack1
     particlesPrefab: {fileID: 0}
   - minDamage: 30
     MaxDamage: 60
     attackTime: 2
     animationName: Attack02
+    soundName: OrAttack2
     particlesPrefab: {fileID: 0}

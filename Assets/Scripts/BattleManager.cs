@@ -23,6 +23,11 @@ public class BattleManager : MonoBehaviour
     public void RemoveFighter(Fighter fighter)
     {
         _Fighters.Remove(fighter);
+        if (_BattleCouroutine != null)
+        {
+            StopCoroutine(_BattleCouroutine);
+            _BattleCouroutine = null;
+        }
     }
     private void CheckFIghters()
     {
@@ -31,9 +36,14 @@ public class BattleManager : MonoBehaviour
             return;
         }
         _onfightersReady?.Invoke();
+        StartBattle();
     }
     public void StartBattle()
     {
+        foreach (Fighter fighter in _Fighters)
+        {
+            fighter.InitializeFighter();
+        }
         _BattleCouroutine = StartCoroutine(BattleCoroutine());
     }
     private IEnumerator BattleCoroutine()
@@ -47,7 +57,10 @@ public class BattleManager : MonoBehaviour
             {
                 defender = _Fighters[Random.Range(0, _Fighters.Count)];
             }
+            attacker.transform.LookAt(defender.transform);
+            defender.transform.LookAt(attacker.transform);
             Attack attack = attacker.attacks.getRandomAttack();
+            SoundManager.instance.Play(attack.soundName);
             yield return new WaitForSeconds(attack.attackTime);
             defender.Health.TakeDamage(Random.Range(attack.minDamage, attack.MaxDamage));
             if (defender.Health.CurrentHealth <= 0)
@@ -55,7 +68,7 @@ public class BattleManager : MonoBehaviour
                 _Fighters.Remove(defender);
                 
             }
-            yield return null;
+            yield return new WaitForSeconds(1f);
         }
         _onBattleFinished?.Invoke();
     }

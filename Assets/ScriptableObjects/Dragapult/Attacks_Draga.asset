@@ -17,4 +17,5 @@ MonoBehaviour:
     MaxDamage: 80
     attackTime: 2
     animationName: Attack
+    soundName: DragaAttack
     particlesPrefab: {fileID: 0}
