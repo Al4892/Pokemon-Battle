@@ -18,4 +18,5 @@ MonoBehaviour:
     attackTime: 2
     animationName: Attack
     soundName: DragaAttack
-    particlesPrefab: {fileID: 0}
+    particlesPrefab: {fileID: 2708598583397607911, guid: 6398d43fe79ea0140913dc5530c646af,
+      type: 3}

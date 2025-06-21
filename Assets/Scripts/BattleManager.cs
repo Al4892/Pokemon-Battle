@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
 
+
 public class BattleManager : MonoBehaviour
 {
     [SerializeField]
@@ -15,6 +16,7 @@ public class BattleManager : MonoBehaviour
     private UnityEvent _onBattleStarted;
     private List<Fighter> _Fighters = new List<Fighter>();
     private Coroutine _BattleCouroutine;
+    private DamageTarget _damageTarget = new DamageTarget();
     public void AddFighter(Fighter fighter)
     {
         _Fighters.Add(fighter);
@@ -62,8 +64,14 @@ public class BattleManager : MonoBehaviour
             Attack attack = attacker.attacks.getRandomAttack();
             SoundManager.instance.Play(attack.soundName);
             attacker.CharacterAnimator.Play(attack.animationName);
+            GameObject attackParticles=Instantiate(attack.particlesPrefab, attacker.transform.position, Quaternion.identity);
+            attackParticles.transform.SetParent(attacker.transform);
             yield return new WaitForSeconds(attack.attackTime);
-            defender.Health.TakeDamage(Random.Range(attack.minDamage, attack.MaxDamage));
+            float damage = Random.Range(attack.minDamage, attack.MaxDamage);
+            GameObject DefenderParticles= Instantiate(attack.hitParticlesPrefab, defender.transform.position, Quaternion.identity);
+            DefenderParticles.transform.SetParent(defender.transform);
+            _damageTarget.setDamageTarget(damage,defender.transform);
+            defender.Health.TakeDamage(_damageTarget);
             if (defender.Health.CurrentHealth <= 0)
             {
                 _Fighters.Remove(defender);
