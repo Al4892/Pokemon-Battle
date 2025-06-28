@@ -13,20 +13,20 @@ MonoBehaviour:
   m_Name: Attacks
   m_EditorClassIdentifier: 
   attacks:
-  - attackName: 
+  - attackName: Soerd
     minDamage: 50
     MaxDamage: 100
-    attackTime: 3
+    attackTime: 4
     animationName: attack01
     soundName: OrAttack1
     hitParticlesPrefab: {fileID: 8525990746615576120, guid: b85d21f3b8fed714bacf0c4fd50fa512,
       type: 3}
     particlesPrefab: {fileID: 6263782476919498309, guid: 1fd2749f2a4056446881dce86ed70c39,
       type: 3}
-  - attackName: 
+  - attackName: DoubleSword
     minDamage: 30
     MaxDamage: 60
-    attackTime: 2
+    attackTime: 4
     animationName: attack02
     soundName: OrAttack2
     hitParticlesPrefab: {fileID: 8525990746615576120, guid: b85d21f3b8fed714bacf0c4fd50fa512,
