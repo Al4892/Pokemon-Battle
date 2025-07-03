@@ -36,6 +36,7 @@ public class MessageFrame : MonoBehaviour
         _currentText = message;
         _text.text = "";
         _animator.Play(_showAnimationName, 0, 0f);
+        SoundManager.instance.Play("Pop");
         typingCoroutine = StartCoroutine(TypeMessage());
     }
     private IEnumerator TypeMessage()
@@ -44,6 +45,7 @@ public class MessageFrame : MonoBehaviour
         {
             _text.text += _currentText[i];
             yield return new WaitForSeconds(_timeBetweenLetters);
+            SoundManager.instance.Play("Tems");
         }
         yield return new WaitForSeconds(_timeToHide);
         _animator.Play(_hideAnimationName, 0, 0f);
@@ -61,6 +63,8 @@ public class MessageFrame : MonoBehaviour
     {
         StopCoroutine();
         _animator.Play(_hideAnimationName, 0, 0f);
+        SoundManager.instance.Play("Pop2");
+        SoundManager.instance.StopMusic();
         _text.text = "";
     }
     
