@@ -3789,7 +3789,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1819804147}
   m_Father: {fileID: 1930807781}
@@ -5862,7 +5862,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 96385723}
-  _animator: {fileID: 1571617776}
   _timeBetweenLetters: 0.05
   _timeToHide: 2
   _showAnimationName: ShowMessageFrame

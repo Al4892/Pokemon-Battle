@@ -33,7 +33,7 @@ public class MessageFrame : MonoBehaviour
     public void ShowMessage(string message)
     {
         StopCoroutine();
-            SoundManager.instance.Play("Pop");
+         SoundManager.instance.Play("Pop");
         _currentText = message;
         _text.text = "";
         _animator.Play(_showAnimationName, 0, 0f);
