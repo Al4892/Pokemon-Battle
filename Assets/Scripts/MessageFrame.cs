@@ -1,5 +1,4 @@
 using System.Collections;
-using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,8 +7,6 @@ public class MessageFrame : MonoBehaviour
     [SerializeField]
     private Text _text;
     [SerializeField]
-    private Animator _animator;
-    [SerializeField]
     private float _timeBetweenLetters = 0.05f;
     [SerializeField]
     private float _timeToHide = 2f;
@@ -17,8 +14,9 @@ public class MessageFrame : MonoBehaviour
     private string _showAnimationName = "ShowMessageFrame";
     [SerializeField]
     private string _hideAnimationName = "HideMessageFrame";
+    private Animator _animator;
     private string _currentText;
-    private Coroutine typingCoroutine;
+    private Coroutine _typingCoroutine;
     public static MessageFrame Instance { get; private set; }
     private void Awake()
     {
@@ -30,14 +28,16 @@ public class MessageFrame : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        _animator = GetComponent<Animator>();
     }
     public void ShowMessage(string message)
     {
+        StopCoroutine();
+            SoundManager.instance.Play("Pop");
         _currentText = message;
         _text.text = "";
         _animator.Play(_showAnimationName, 0, 0f);
-        SoundManager.instance.Play("Pop");
-        typingCoroutine = StartCoroutine(TypeMessage());
+        _typingCoroutine = StartCoroutine(TypeMessage());
     }
     private IEnumerator TypeMessage()
     {
@@ -52,20 +52,17 @@ public class MessageFrame : MonoBehaviour
     }
     private void StopCoroutine()
     {
-        if (typingCoroutine != null)
+        if (_typingCoroutine != null)
         {
-            StopCoroutine(typingCoroutine);
-            typingCoroutine = null;
-
+            StopCoroutine(_typingCoroutine);
+            _typingCoroutine = null;
         }
     }
     public void StopMessage()
     {
         StopCoroutine();
         _animator.Play(_hideAnimationName, 0, 0f);
-        SoundManager.instance.Play("Pop2");
-        SoundManager.instance.StopMusic();
+            SoundManager.instance.Play("Pop2");
         _text.text = "";
     }
-    
 }

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
+using Unity.Android.Gradle.Manifest;
 
 public class BattleManager : MonoBehaviour
 {
@@ -13,11 +14,16 @@ public class BattleManager : MonoBehaviour
     private UnityEvent _onBattleFinished;
     [SerializeField]
     private UnityEvent _onBattleStarted;
+    [SerializeField]
+    private UnityEvent _searching;
+    [SerializeField]
+    private UnityEvent _onFound;
     private List<Fighter> _fighters = new List<Fighter>();
     private Coroutine _battleCoroutine;
     private DamageTarget _damageTarget = new DamageTarget();
     public void AddFighter(Fighter fighter)
     {
+        _onFound.Invoke();
         MessageFrame.Instance.ShowMessage($"{fighter.Name} has joined the battle!");
         _fighters.Add(fighter);
         CheckFighters();
@@ -28,6 +34,11 @@ public class BattleManager : MonoBehaviour
         if (_fighters.Count < 2)
         {
             StopBattle();
+        }
+        if (_fighters.Count == 0)
+        {
+            _searching.Invoke();
+            
         }
     }
     private void StopBattle()
