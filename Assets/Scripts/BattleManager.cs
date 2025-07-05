@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
-using Unity.Android.Gradle.Manifest;
+
 
 public class BattleManager : MonoBehaviour
 {

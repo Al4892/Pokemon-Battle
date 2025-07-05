@@ -751,7 +751,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &330585545
 Camera:
   m_ObjectHideFlags: 0
@@ -3527,13 +3527,13 @@ MonoBehaviour:
   OnTargetFound:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 94025383}
-        m_TargetAssemblyTypeName: InstantiateObject, Assembly-CSharp
-        m_MethodName: Instantiate
-        m_Mode: 2
+      - m_Target: {fileID: 396934613}
+        m_TargetAssemblyTypeName: Fighter, Assembly-CSharp
+        m_MethodName: InitializeFighter
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 396934609}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6217,13 +6217,13 @@ MonoBehaviour:
   OnTargetFound:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 94025383}
-        m_TargetAssemblyTypeName: InstantiateObject, Assembly-CSharp
-        m_MethodName: Instantiate
-        m_Mode: 2
+      - m_Target: {fileID: 1431697734}
+        m_TargetAssemblyTypeName: Fighter, Assembly-CSharp
+        m_MethodName: InitializeFighter
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1431697733}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6574,13 +6574,13 @@ MonoBehaviour:
   OnTargetFound:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 94025383}
-        m_TargetAssemblyTypeName: InstantiateObject, Assembly-CSharp
-        m_MethodName: Instantiate
-        m_Mode: 2
+      - m_Target: {fileID: 1333819832}
+        m_TargetAssemblyTypeName: Fighter, Assembly-CSharp
+        m_MethodName: InitializeFighter
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1333819829}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
